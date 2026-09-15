@@ -48,7 +48,6 @@ fetch('products.json?ts=' + Date.now(), {cache:'no-store'})
     if (!products.length) { box.innerHTML = '<div class="empty">Product links will appear here soon.</div>'; return; }
     box.innerHTML = products.map(p => `
       <article class="product">
-        <div class="number">#${esc(String(p.number || '').padStart(3,'0'))}</div>
         <div class="name">${esc(p.label || p.product || 'SulitPicks Find')}</div>
         <div class="meta">${esc(p.price ? ('Price when checked: ' + p.price) : '')}</div>
         <a class="button" href="${esc(p.affiliate_link)}" target="_blank" rel="nofollow sponsored noopener">View on Shopee</a>
