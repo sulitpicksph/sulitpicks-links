@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="SulitPicks PH product links - useful finds, deals, and affiliate picks.">
+  <title>SulitPicks PH - Product Links</title>
+  <style>
+    :root { color-scheme: light; --bg:#f7f7f9; --card:#fff; --text:#171717; --muted:#6b7280; --accent:#ff5a1f; --border:#e5e7eb; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; background:var(--bg); color:var(--text); }
+    .wrap { width:min(680px,calc(100% - 28px)); margin:0 auto; padding:34px 0 48px; }
+    header { text-align:center; margin-bottom:26px; }
+    .badge { width:72px; height:72px; border-radius:22px; display:grid; place-items:center; margin:0 auto 14px; font-size:34px; background:#111827; color:white; box-shadow:0 10px 30px rgba(0,0,0,.12); }
+    h1 { margin:0; font-size:28px; }
+    .tag { margin:8px 0 0; color:var(--muted); line-height:1.45; }
+    .product { background:var(--card); border:1px solid var(--border); border-radius:18px; padding:17px; margin:12px 0; box-shadow:0 4px 18px rgba(0,0,0,.035); }
+    .number { font-size:12px; font-weight:800; color:var(--accent); letter-spacing:.08em; }
+    .name { font-size:17px; line-height:1.35; font-weight:750; margin:5px 0 7px; }
+    .meta { color:var(--muted); font-size:13px; min-height:18px; }
+    .button { display:block; text-decoration:none; text-align:center; margin-top:13px; padding:13px 15px; border-radius:12px; background:#ee4d2d; color:#fff; font-weight:800; }
+    .button:active { transform:translateY(1px); }
+    .empty { text-align:center; background:#fff; border:1px dashed var(--border); border-radius:18px; padding:30px 18px; color:var(--muted); }
+    footer { text-align:center; color:var(--muted); font-size:12px; line-height:1.55; margin-top:28px; padding:0 8px; }
+    #updated { margin-top:7px; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div class="badge">SHOP</div>
+      <h1>SulitPicks PH</h1>
+      <p class="tag">Sulit finds - Deals - Useful products worth checking</p>
+    </header>
+    <section id="products"><div class="empty">Loading product links...</div></section>
+    <footer>
+      <div>Some links are affiliate links. SulitPicks PH may earn a small commission at no extra cost to you.</div>
+      <div id="updated"></div>
+    </footer>
+  </main>
+<script>
+const esc = (s) => String(s ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+fetch('products.json?ts=' + Date.now(), {cache:'no-store'})
+  .then(r => { if (!r.ok) throw new Error('Could not load products'); return r.json(); })
+  .then(data => {
+    const box = document.getElementById('products');
+    const products = Array.isArray(data.products) ? data.products : [];
+    if (!products.length) { box.innerHTML = '<div class="empty">Product links will appear here soon.</div>'; return; }
+    box.innerHTML = products.map(p => `
+      <article class="product">
+        <div class="number">#${esc(String(p.number || '').padStart(3,'0'))}</div>
+        <div class="name">${esc(p.label || p.product || 'SulitPicks Find')}</div>
+        <div class="meta">${esc(p.price ? ('Price when checked: ' + p.price) : '')}</div>
+        <a class="button" href="${esc(p.affiliate_link)}" target="_blank" rel="nofollow sponsored noopener">View on Shopee</a>
+      </article>`).join('');
+    if (data.updated_at) document.getElementById('updated').textContent = 'Updated ' + data.updated_at;
+  })
+  .catch(() => { document.getElementById('products').innerHTML = '<div class="empty">Product links are updating. Please try again shortly.</div>'; });
+</script>
+</body>
+</html>
