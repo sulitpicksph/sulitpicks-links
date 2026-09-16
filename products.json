@@ -1,7 +1,16 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-15 02:57 PM PHT",
+  "updated_at": "2026-09-16 09:32 AM PHT",
   "products": [
+    {
+      "campaign_id": "002_JNK_3650_Automatic_Umbrella_3folds_folding_automatic_Black_C_2026-09-16",
+      "number": 2,
+      "product": "JNK #3650 Automatic Umbrella 3folds folding automatic Black Coated UV Protection Umbrella",
+      "label": "JNK #3650 Automatic Umbrella 3folds folding automatic Black",
+      "price": "₱140",
+      "affiliate_link": "https://s.shopee.ph/6q0kAj7qcf",
+      "added_at": "2026-09-16T01:32:54Z"
+    },
     {
       "campaign_id": "001_RAF_7_8_16_Holes_Mini_Donut_Maker_Machine_Electric_Mini_Doug_2026-09-15",
       "number": 1,
