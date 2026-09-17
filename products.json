@@ -1,7 +1,16 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-17 10:15 AM PHT",
+  "updated_at": "2026-09-17 10:39 AM PHT",
   "products": [
+    {
+      "campaign_id": "005_Dreepor_2L_Capacity_Electric_Kettle_Water_Kettle_Electric_He_2026-09-17",
+      "number": 5,
+      "product": "Dreepor 2L Capacity Electric Kettle Water Kettle Electric Heater Easy Use Fast Boiling",
+      "label": "Dreepor 2L Capacity Electric Kettle Water Kettle Electric",
+      "price": "₱348",
+      "affiliate_link": "https://s.shopee.ph/7fZsq3edTh",
+      "added_at": "2026-09-17T02:39:24Z"
+    },
     {
       "campaign_id": "004_Vivid_Mop_with_Spinner_and_Bucket_360_dual_drive_flat_rotati_2026-09-17",
       "number": 4,
